@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            width : 100vw;
+            height : 100vh;
+            display : flex;
+            justify-content : center;
+            align-items : center;
+            color :white;
+        }
+        .formclass{
+            width:700px;
+            height : 550px;
+            border : 0px solid;
+            border-radius : 5px;
+            display : flex;
+            justify-content : center;
+            padding : 30px;
+            {% comment %} align-items : center; {% endcomment %}
+            flex-direction : column;
+            {% comment %} background-image : url("/static/background.jpg"); {% endcomment %}
+            background-color : rgb(52, 58, 64)
+
+        }
+        .inputfield{
+            display:flex;
+            flex-direction : column;
+            margin-top : 30px;
+        }
+        .inputfield input, select{
+            border-radius : 5px;
+            padding : 5px;
+        }
+        
+        .button button{
+            border-radius : 5px;
+            background-color : white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar1">
+        {% include "includes.html" %}
+    </div>
+    <div class="container">
+        <form action="{% url "predictStoke" %}" method="POST" class="formclass">
+            {% csrf_token %}
+            <div class="inputfield">
+                <label><b>Gender :</b></label>
+                <select name="gender" id="gender">
+                    <option value="1">Male</option>
+                    <option value="0">Female</option>
+                </select>
+            </div>
+            <div class="inputfield">
+                <label><b>Age :</b></label>
+                <input type="number" name="age" id="age" required>
+            </div>
+            <div class="inputfield">
+                <label for="hypertension"><b>Hypertension :</b></label>
+                <select name="hypertension" id="hypertension">
+                    <option value="1">Yes</option>
+                    <option value="0" selected >No</option>
+                </select>
+            </div>
+            <div class="inputfield">
+                <label for="heartdisease"><b>Heart-disease :</b> </label>
+                <select name="heartdisease" id="heartdisease">
+                    <option value="1">Yes</option>
+                    <option value="0" selected>No</option>
+                </select>
+            </div>
+            <div class="inputfield">
+                <label for="average-glucose-level"><b>Average Glucose Level :</b> </label>
+                <input type="number" name = "averageglucoselevel" step="0.01" required> 
+            </div>
+            <div class="inputfield">
+                <label for="bmi"><b>Body Mass Index :</b> </label>
+                <input type="number" name="bmi" step="0.01" required> 
+            </div>
+            <div class="inputfield">
+                <label ><b>Smoking-status :</b> </label>
+                <select name="smokingstatus" id="smokingstatus">
+                    <option value="1">Yes</option>
+                    <option value="0" selected>No</option>
+                </select>
+            </div>
+            <div class="button">
+                <button type="submit">submit</button>
+            </div>
+        </form>
+    </div>
+    
+</body>
+</html>

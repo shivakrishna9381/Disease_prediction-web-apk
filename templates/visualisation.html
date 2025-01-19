@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin:0;
+        }
+        .image img{
+            width:90vw;
+            height:90vh;
+        }
+    </style>
+</head>
+<body>
+    {% include "includes.html" %}
+    <div class="image">
+        <img src="{% static 'visimg.jpg' %}" alt="">
+    </div>
+</body>
+</html>

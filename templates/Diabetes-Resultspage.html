@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'images/coronacovidimg.jpg' %}">
+    <title>Results page</title>
+    
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 90%;
+            margin: 0 auto;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .text-danger {
+            color: red;
+        }
+        .text-success {
+            color: green;
+        }
+        h1 {
+            font-size: 2.5em;
+        }
+        h4 {
+            font-size: 1.2em;
+            line-height: 1.5;
+        }
+        ol {
+            padding-left: 1.5em;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .col-12 {
+            width: 100%;
+        }
+        .col-md-5, .col-md-6, .col-lg-5, .col-lg-7 {
+            margin-bottom: 20px;
+        }
+        .col-md-5, .col-lg-5 {
+            width: 40%;
+        }
+        .col-md-6, .col-lg-7 {
+            width: 58%;
+        }
+        .img-fluid {
+            max-width: 100%;
+            height: auto;
+        }
+        .pt-3 {
+            padding-top: 1rem;
+        }
+        @media (max-width: 768px) {
+            .col-md-5, .col-md-6, .col-lg-5, .col-lg-7 {
+                width: 100%;
+            }
+        }
+        {% comment %} .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        } {% endcomment %}
+    
+        .card {
+            margin: 20px;
+            padding: 20px;
+            width: 500px;
+            min-height: 200px;
+            display: grid;
+            grid-template-rows: 20px 50px 1fr 50px;
+            border-radius: 10px;
+            box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+            transition: all 0.5s;
+        }
+    
+        .card:hover {
+            box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
+            transform: scale(1.01);
+        }
+    
+        .card__exit {
+            grid-row: 1/2;
+            justify-self: end;
+        }
+    
+        .card__title1 {
+            grid-row: 3/4;
+            font-weight: 400;
+            color: #053b08;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+    
+        .card__title2 {
+            grid-row: 3/4;
+            font-weight: 400;
+            color: rgb(37, 3, 12);
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+    
+    
+        .card-1 {
+            background-color : #FFC0CB;
+        }
+    
+        .card-2 {
+            width : 100%;
+            height : 100vh;
+            background: radial-gradient(#e23151b2, #d41737a6);
+        }
+    
+        @media (max-width: 1600px) {
+            .card-container {
+                justify-content: center;
+            }
+        }
+        .content{
+            display : flex;
+            flex-direction : row;
+        }
+        .mcontent{
+            margin-left : 100px;
+            width : 80%;
+        }
+        .card-res{
+            display : flex;
+            justify-content : center;
+            align-items : center;
+        }
+    </style>
+</head>
+<body>
+    {% include "includes.html" %}
+    
+    <div class="card-container">
+        {% if prediction == 0 %}
+        <div class="card card-1">
+            <h2 class="card__title1 ">No Diabetes detected.</h2>
+            <div class="mcontent">
+                <h4>1. Risk Factors for Diabetes:</h4>
+                <ul>
+                    <li><h5>Age: Individuals over 45 are at a higher risk, though diabetes can develop at any age.</h5></li>
+                    <li><h5>Family History: A family history of diabetes (particularly Type 2) significantly increases the risk.</h5></li>
+                    <li><h5>Obesity and Body Fat Distribution: Excess weight, especially around the abdomen, raises insulin resistance, increasing the likelihood of developing Type 2 diabetes.</h5></li>
+                    <li><h5>Sedentary Lifestyle: Lack of physical activity can contribute to obesity and insulin resistance.</h5></li>
+                    <li><h5>High Blood Pressure and Cholesterol Levels: Hypertension and abnormal cholesterol levels are often associated with insulin resistance and increase diabetes risk.</h5></li>
+                    <li><h5>Gestational Diabetes: Women who have had gestational diabetes or delivered a baby weighing more than 9 pounds are at higher risk of developing Type 2 diabetes later in life.</h5></li>
+                    <li><h5>Polycystic Ovary Syndrome (PCOS): PCOS is associated with insulin resistance, which can increase the risk of diabetes.</h5></li>
+                </ul>
+            </div>
+        </div>
+        {% else %}
+        <div class="card-res">
+            <div class="card card-1">
+                <h2 class="card__title1 ">Diabetes detected.</h2>
+            </div>
+        </div>
+        <br>
+        <div class="content"></div>
+            <div class="mcontent">
+                <h4>2. Lifestyle Recommendations:</h4>
+                <ul>
+                    <li><h5>Balanced Diet: Emphasize whole grains, fruits, vegetables, lean proteins, and healthy fats. Limit refined sugars and simple carbs that cause spikes in blood sugar.</h5></li>
+                    <li><h5>Regular Physical Activity: Aim for 150 minutes of moderate aerobic exercise weekly, such as brisk walking or swimming, combined with muscle-strengthening activities to improve insulin sensitivity.</h5></li>
+                    <li><h5>Weight Management: Losing even 5-10% of body weight if overweight can significantly reduce diabetes risk.</h5></li>
+                    <li><h5>Stress Management: High stress can increase blood sugar levels. Mindfulness, relaxation techniques, and regular physical activity can support stress reduction.</h5></li>
+                    <li><h5>Limit Alcohol and Avoid Smoking: Smoking and high alcohol intake can increase blood sugar levels and complicate diabetes management.</h5></li>
+                </ul>
+            </div>
+            
+            
+        </div>
+        {% endif %}
+</body>
+</html>

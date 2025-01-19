@@ -1,0 +1,112 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            margin-top : 50px;
+            height : 100vh;
+            display : flex;
+            justify-content : center;
+            align-items:center;
+        }
+        .formclass{
+            width : 600px;
+            border : 2px solid;
+            padding : 80px;
+            display : flex;
+            flex-direction : column;
+            background : rgb(52, 58, 64);
+            color : white;
+            border-radius : 5px;
+        }
+        .inputfield{
+            display : flex;
+            flex-direction : column;
+            padding-bottom : 10px;
+
+        }
+        .inputfield input, select{
+            border-radius : 5px;
+            padding : 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        {% include "includes.html" %}
+    </div>
+    <div class="container">
+        
+        <form action="{% url "predictasthma" %}" method="post" class = "formclass">
+            {% csrf_token %}
+            <div class="inputfield">
+                <label for="">Tiredness : </label>
+                <select name="Tiredness" id="Tiredness">
+                    <option value="1">Yes</option>
+                    <option value="0">NO</option>
+                </select>
+            </div>
+            <div class="inputfield">
+                <label for="">Dry cough : </label>
+                <select name="drycough" id="drycough">
+                    <option value="1">Yes</option>
+                    <option value="0">NO</option>
+                </select>
+            </div>
+            <div class="inputfield">
+                <label for="">Difficulty in breathing : </label>
+                <select name="dib" id="dib">
+                    <option value="1">Yes</option>
+                    <option value="0">NO</option>
+                </select>
+            </div>
+            <div class="inputfield">
+                <label for="">Sore throat : </label>
+                <select name="sorethroat" id="sorethroat">
+                    <option value="1">Yes</option>
+                    <option value="0">NO</option>
+                </select>
+            </div>
+            <div class="inputfield">
+                <label for="">Body Pains : </label>
+                <select name="Pains" id="Pains">
+                    <option value="1">Yes</option>
+                    <option value="0">NO</option>
+                </select>
+            </div>
+            <div class="inputfield">
+                <label for="">stuffy nose : </label>
+                <select name="stuffynose" id="stuffynose">
+                    <option value="1">Yes</option>
+                    <option value="0">NO</option>
+                </select>
+            </div>
+            <div class="inputfield">
+                <label for="">Runny nose : </label>
+                <select name="runnynose" id="runnynose">
+                    <option value="1">Yes</option>
+                    <option value="0">NO</option>
+                </select>
+            </div>
+            <div class="inputfield">
+                <label for="">Age : </label>
+                <input type="number" name="age" id="age">
+            </div>
+            <div class="inputfield">
+                <label for="">Gender : </label>
+                <select name="gender" id="gender">
+                    <option value="1">Male</option>
+                    <option value="0">Female</option>
+                </select>
+            </div>
+            <div class="button">
+                <button type="submit">submit</button>
+            </div>
+
+
+        </form>
+    </div>
+</body>
+</html>

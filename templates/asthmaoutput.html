@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Disease Prediction Results</title>
+  <style>
+    /* Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      background-color: #007bff;
+      color: #fff;
+    }
+
+    header .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    header nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 1rem;
+    }
+
+    header nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* Main Content */
+    main {
+      padding: 2rem;
+    }
+
+    /* Patient Information */
+    .patient-info, .prediction-results, .risk-factors {
+      background-color: #fff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .patient-info .info-card p {
+      margin: 0.5rem 0;
+    }
+
+    /* Prediction Results */
+    .prediction-results .summary {
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .disease-list table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .disease-list th, .disease-list td {
+      border: 1px solid #ddd;
+      padding: 0.75rem;
+      text-align: center;
+    }
+
+    /* Risk Factors */
+    .risk-factors ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .risk-factors li {
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+    <div class="navbar">
+        {% include "includes.html" %}
+    </div>
+    {% if prediction == 0 %}
+  <main>
+    <section class="prediction-results">
+      <h2>Prediction Results</h2>
+      <div class="summary">
+        <h3>Diagnosis: <span style="color : green">Negative</span></h3>
+        <p>Confidence Level: 90%</p>
+      </div>
+    </section>
+
+    <!-- Explanation and Risk Factors -->
+    <section class="risk-factors">
+        <h1>Asthma Lifestyle Recommendations</h1>
+
+        <h2>1. Avoid Triggers</h2>
+        <h3>Identify Triggers</h3>
+        <p>Common asthma triggers include allergens (pollen, dust mites, mold, pet dander), smoke, pollution, cold air, and strong odors.</p>
+        
+        <h3>Avoid Smoking and Smoke Exposure</h3>
+        <p>Smoking and secondhand smoke can irritate airways. Avoid exposure to cigarette smoke, vaping, and even smoky environments.</p>
+        
+        <h3>Limit Allergens at Home</h3>
+        <p>Use hypoallergenic pillowcases, wash bedding frequently, and keep pets out of the bedroom if pet dander is a trigger.</p>
+    
+        <h2>2. Exercise Regularly (but Carefully)</h2>
+        <h3>Choose Low-Impact Exercise</h3>
+        <p>Activities like walking, swimming, and yoga are usually safe for people with asthma.</p>
+    
+        <h3>Warm Up and Cool Down</h3>
+        <p>Warming up before exercising and cooling down afterward can help prevent exercise-induced asthma attacks.</p>
+    
+        <h3>Exercise in a Clean Environment</h3>
+        <p>Exercise indoors on days when pollen counts or air pollution levels are high.</p>
+    
+        <h2>3. Maintain a Healthy Diet</h2>
+        <h3>Eat Anti-Inflammatory Foods</h3>
+        <p>Incorporate fruits, vegetables, whole grains, and omega-3 rich foods (like salmon) that may help reduce inflammation.</p>
+    
+        <h3>Stay Hydrated</h3>
+        <p>Drinking water helps keep mucus thin, making it easier to clear airways.</p>
+    
+        <h3>Avoid Foods That Cause Allergies</h3>
+        <p>If food allergies are a trigger, avoid those specific foods (e.g., dairy, peanuts).</p>
+    
+        <h2>4. Manage Stress and Anxiety</h2>
+        <h3>Practice Relaxation Techniques</h3>
+        <p>Techniques like deep breathing exercises, meditation, and yoga can help reduce stress and improve lung capacity.</p>
+    
+        <h3>Get Enough Sleep</h3>
+        <p>Sleep is essential for managing stress, but be sure to sleep in a clean, allergen-free environment.</p>
+    
+    </section>
+  </main>
+  {% else %}
+  <main>
+    <section class="prediction-results">
+      <h2>Prediction Results</h2>
+      <div class="summary">
+        <h3>Diagnosis: <span style="color : red">Positive</span></h3>
+        <p>Confidence Level: 90%</p>
+      </div>
+      
+    </section>
+
+    <!-- Explanation and Risk Factors -->
+    <section class="risk-factors">
+        <h1>Asthma: Risk Factors and Lifestyle Recommendations</h1>
+
+        <h2>Risk Factors for Asthma</h2>
+    
+        <h3>1. Genetic Factors</h3>
+        <p>Asthma often runs in families. Having a parent or sibling with asthma increases the likelihood of developing the condition.</p>
+    
+        <h3>2. Allergies</h3>
+        <p>People with allergies, such as hay fever or eczema, are at a higher risk of developing asthma. This is known as atopic asthma.</p>
+    
+        <h3>3. Environmental Exposure</h3>
+        <p>Exposure to allergens and irritants, such as pollution, smoke, pollen, and dust mites, can increase asthma risk, especially in early childhood.</p>
+    
+        <h3>4. Respiratory Infections</h3>
+        <p>Severe respiratory infections in childhood, particularly those affecting the lungs, can increase asthma risk.</p>
+    
+        <h3>5. Occupational Hazards</h3>
+        <p>Certain work environments with exposure to chemicals, dust, or fumes (e.g., construction, agriculture, and hairdressing) can increase asthma risk.</p>
+    
+        <h3>6. Obesity</h3>
+        <p>Being overweight or obese can contribute to inflammation and make asthma symptoms more severe or frequent.</p>
+    
+        <h3>7. Smoking</h3>
+        <p>Both active smoking and exposure to secondhand smoke increase the risk of asthma, especially in children and adolescents.</p>
+    
+        <h3>8. Air Pollution</h3>
+        <p>Living in areas with high air pollution, particularly from traffic or industrial sources, can raise asthma risk and worsen symptoms.</p>
+    
+        <h3>9. Gender</h3>
+        <p>In children, asthma is more common in boys, while in adults, it is more common in women.</p>
+    
+        <h3>10. Stress and Emotional Factors</h3>
+        <p>Chronic stress and strong emotions can sometimes trigger asthma attacks or exacerbate symptoms.</p>
+    
+    </section>
+  </main>
+  {% endif %}
+</body>
+</html>

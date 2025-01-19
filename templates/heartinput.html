@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Covid Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        main {
+            background-repeat: no-repeat;
+            background-size: cover;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: black;
+            margin-bottom: 20px;
+        }
+
+        .form-container {
+            background-color: #343a40;
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: white;
+        }
+
+        .form-container .btn-submit {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-container .btn-submit:hover {
+            background-color: #218838;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            select {
+                padding: 8px;
+            }
+        }
+        input{
+            border-radius : 5px;
+            width : 95%;
+            padding : 10px;
+            margin:5px;
+        }
+    </style>
+</head>
+
+<body>
+    {% include "includes.html" %}
+    <main>
+    <h1>Enter your details</h1>    
+    <div class="container">
+        <div class="form-container">
+            <form method="POST" action="/predict_heart/">
+                {% csrf_token %}
+                <label>Age:</label><input type="number" name="age" required><br>
+                <label>Sex (1 = Male, 0 = Female):</label><input type="number" name="sex" required><br>
+                <label>Chest Pain Type (0-3):</label><input type="number" name="cp" required><br>
+                <label>Resting Blood Pressure:</label><input type="number" name="trestbps" required><br>
+                <label>Cholesterol:</label><input type="number" name="chol" required><br>
+                <label>Fasting Blood Sugar (1 if > 120mg/dl, else 0):</label><input type="number" name="fbs" required><br>
+                <label>Resting ECG (0-2):</label><input type="number" name="restecg" required><br>
+                <label>Max Heart Rate Achieved:</label><input type="number" name="thalach" required><br>
+                <label>Exercise Induced Angina (1 = Yes, 0 = No):</label><input type="number" name="exang" required><br>
+                <label>ST Depression:</label><input type="number" name="oldpeak" step="0.1" required><br>
+                <label>Slope (0-2):</label><input type="number" name="slope" required><br>
+                <label>Number of Major Vessels (0-3):</label><input type="number" name="ca" required><br>
+                <label>Thalassemia (0-3):</label><input type="number" name="thal" required><br>
+                <button type="submit">Submit</button>
+              </form>
+              
+        </div>
+    </div>
+</body>
+               

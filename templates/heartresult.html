@@ -1,0 +1,183 @@
+{% block content %}
+<html>
+
+<head>
+    <title>HDP Result Page</title>
+    <link
+      rel="icon"
+      href="https://i.ibb.co/7WTBrQ9/kisspng-heart-computer-icons-clip-art-5afac5a8e1d416-434932121526384040925.png"
+      type="image/png"
+    />
+</head>
+<style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+            Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        background-image: url("https://i.ibb.co/XFXPPDp/abc.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .heading-container {
+        text-align: center;
+    }
+
+    .heading {
+        font-weight: 600;
+    }
+
+
+    .credit {
+        margin: 10px 0px;
+        color: #888888;
+        font-size: 25px;
+        transition: all 0.5s;
+    }
+
+    .credit a {
+        color: inherit;
+    }
+
+    a,
+    .card__exit,
+    .card__icon {
+        position: relative;
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    a::after {
+        position: absolute;
+        top: 25px;
+        left: 0;
+        content: ""; 
+        width: 0%;
+        height: 3px;
+        background-color: rgba(255, 255, 255, 0.6);
+        transition: all 0.5s;
+    }
+
+    a:hover::after {
+        width: 100%;
+    }
+
+    .main-container {
+        padding: 30px;
+    }
+
+    .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .card {
+        margin: 20px;
+        padding: 20px;
+        width: 500px;
+        height : 500px;
+        display: grid;
+        grid-template-rows: 20px 50px 1fr 50px;
+        border-radius: 10px;
+        box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+        transition: all 0.5s;
+    }
+
+    .card:hover {
+        box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
+        transform: scale(1.01);
+    }
+
+    .card__exit {
+        grid-row: 1/2;
+        justify-self: end;
+    }
+
+    .card__title1 {
+        grid-row: 3/4;
+        font-weight: 400;
+        color: #053b08;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    .card__title2 {
+        grid-row: 3/4;
+        font-weight: 400;
+        color: rgb(37, 3, 12);
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+
+    .card-1 {
+        background: radial-gradient(#5ee26585, #47cc5d86);
+    }
+
+    .card-2 {
+        background: radial-gradient(#e23151b2, #d41737a6);
+    }
+
+    @media (max-width: 1600px) {
+        .card-container {
+            justify-content: center;
+        }
+    }
+</style>
+
+<body>
+    {% include "includes.html" %}
+    <div class="main-container">
+        <div class="heading-container">
+            <h1 class="heading">Heart Disease Prediction</h1>
+        </div>
+        <div class="card-container">
+            {% if prediction == 0 %}
+            <div class="card card-1">
+                <h2 class="card__title1 " ><h1>Predicted Result :</h1><br>No heart disease detected.</h2>
+            </div>
+            <div class="card card-1">
+                <div class="sugg">
+                    <h4 style  = "text-decoration: underline;">1. Risk Factors for COVID-19: </h4>
+                    <ul>
+                        <li><h4>Age and Gender: Men over 45 and women over 55 have higher risk. Risk increases with age for both genders.</h4></li>
+                        <li><h4>Family History: A family history of heart disease can elevate risk.</h4></li>
+                        <li><h4>Hypertension: High blood pressure damages artery walls, increasing heart disease risk.</h4></li>
+                        <li><h4>High Cholesterol: High LDL ("bad") cholesterol contributes to plaque buildup in arteries, leading to heart disease.</h4></li>
+                        <li><h4>Diabetes: High blood sugar can damage blood vessels and nerves controlling the heart.</h4></li>
+                        <li><h4>Smoking: Smoking damages blood vessels, raises blood pressure, and decreases oxygen supply to the heart</h4></li>
+                        <li><h4>Obesity and Sedentary Lifestyle: Excess weight strains the heart, while a lack of exercise contributes to several risk factors like obesity, hypertension, and diabetes.</h4></li>
+                        <li><h4>Unhealthy Diet: Diets high in saturated fats, trans fats, salt, and sugar can raise blood pressure, cholesterol, and blood sugar.</h4></li>
+                    </ul>  
+                </div>
+            </div>
+            {% else %}
+            
+            <div class="card card-1" style="background: radial-gradient(#e23151b2, #d41737a6);">
+                <h2 class="card__title1 " ><h1>Predicted Result :</h1><br>Heart disease detected.</h2>
+            </div>
+            <div class="card card-2">
+                <div class="sugg">
+                    <h4 style  = "text-decoration: underline;">2. Lifestyle Recommendations: </h4>
+                    <ul>
+                        <li><h4>Heart-Healthy Diet: Emphasize fruits, vegetables, whole grains, lean protein, and healthy fats (e.g., from fish, nuts, and olive oil). Limit salt, sugar, and processed foods.</h4></li>
+                        <li><h4>Regular Physical Activity: Engage in moderate aerobic exercise (e.g., brisk walking, cycling) for at least 150 minutes weekly, along with muscle-strengthening exercises.</h4></li>
+                        <li><h4>Avoid Smoking and Limit Alcohol: Quitting smoking reduces heart disease risk, and moderate alcohol consumption (if any) supports heart health.</h4></li>
+                        <li><h4>Weight Management: Maintaining a healthy weight through diet and exercise can alleviate strain on the heart.</h4></li>
+                        <li><h4>Manage Stress: Chronic stress can increase blood pressure and lead to unhealthy coping behaviors. Techniques like mindfulness, meditation, and regular relaxation can be beneficial.</h4></li>
+                    </ul>  
+                </div>
+            </div>
+            {% endif %}    
+            
+        </div>
+    </div>
+
+</body>
+
+</html>
+{% endblock content %}

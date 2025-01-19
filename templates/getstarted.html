@@ -1,0 +1,542 @@
+{% comment %} {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+          
+          }
+          
+          @media(max-width: 800px) {
+            .content-container {
+              margin: 0;
+              padding: 0;
+              background-color: white;
+              color: #333;
+              display: flex;
+              flex-direction: column;
+              min-height: 100vh;
+            
+            }
+          }
+          
+          
+          header {
+            background-color: #283593;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            flex-grow: 1;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 2;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        nav a:hover {
+            background-color: #5c6bc0;
+        }
+          .login-signup a:hover{
+            background-color: #283593;
+          }
+          .login-signup button:hover{
+            background-color: red;
+          }
+          .login-signup button{
+            color: white;
+            padding: 5px 10px;
+            background-color: rgb(255, 102, 0);;
+            cursor: pointer;
+            border-radius: 5px;
+          }
+          main {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 20px;
+            flex: 1;
+          }
+          section {
+            background: #ffffff;
+            padding: 20px;
+            margin-right: 0%;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          }
+          section h2 {
+            margin-top: 0;
+          }
+          footer {
+            background-color: #283593;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+          }
+          h1 a{
+            text-decoration: none;
+            color: white;
+          }
+          .content-container {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+          }
+          
+          .text-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+          }
+          
+          .picture { 
+            margin: 0 20px;
+            width: 500px;
+            padding-top: 60px;
+          }
+          .custom-button {
+            background-color: rgb(255, 102, 0);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+          }
+          
+          .custom-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background-color: rgba(255, 255, 255, 0.2);
+            transition: all 0.75s ease;
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+          }
+          
+          .custom-button:hover::before {
+            transform: translate(-50%, -50%) scale(1);
+          }
+          
+          .custom-button:hover {
+            background-color: #5c6bc0;
+            color: #fff;
+          }
+          
+          .custom-button:active {
+            transform: scale(0.95);
+          }
+          
+          .formpage{
+            padding-left: 0;
+          }
+          .form-select{
+            border-radius: 3px;
+            padding: 5px;
+            padding-right: 800px;
+            margin-left: 198px;
+            display: inline-block;
+          }
+          label{
+            padding: 20px;
+            margin: 20px;
+            margin-left: 180px;
+            font-size: 16px;
+          }
+          .container{
+            margin-left:198px;
+            
+          }
+          .mainf{
+            margin-left: 0px;
+            background-image: url({% static 'background.jpg' %});
+          
+          }
+          .about{
+            font-style: normal;
+           
+            justify-content: center;
+          }
+          .disease-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px; 
+            margin-top: 20px;
+          }
+          .disease-box {
+            border: 1px solid #ccc; 
+            border-radius: 8px; 
+            padding: 15px; 
+            background-color: #f9f9f9; 
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+          }
+          .disease-box h2 {
+            margin-top: 0; 
+            margin-bottom: 10px; 
+            font-size: 1.5em;
+            color: #333; 
+          }
+          .disease-box p {
+            margin: 0; 
+            color: #555; 
+            line-height: 1.6; 
+          }
+          
+          #how-it-works {
+            padding: 20px;
+            background-color: #f4f4f4;
+            border-radius: 8px;
+            margin: 20px auto;
+            max-width: 1500px;
+          }
+          
+          .how-it-works-step {
+            margin-bottom: 20px;
+          }
+          
+          .how-it-works-step h3 {
+            margin-top: 0;
+            color: #007bff;
+          }
+          
+          .how-it-works-step p {
+            margin: 0;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 17px;
+            line-height: 1.6;
+          }
+          .hmain{
+            display: flex;
+            flex-direction: column;
+          }
+          .image{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          .image img{
+            width: 900px;
+            height: 300px;
+          }
+          
+          
+          
+    </style>
+</head>
+<body>
+    <header>
+        <h1><a href="{% url 'index' %}">Disease Prediction</a></h1>
+        <nav>
+          <a href="{% url 'index' %}">Home</a>
+          <a href="{% url 'howitworks' %}">How It Works</a>
+          {% if user.is_authenticated %}
+            <a href="{% url 'getstarted' %}">Get Started</a>
+            <a href="{% url 'visualization' %}">Visualization</a>
+            <form method="POST" action="{% url 'logout' %}" style="display:inline;">
+              {% csrf_token %}
+              <button type="submit" class="custom-button">Logout</button>
+            </form>
+          {% else %}
+            <a href="{% url 'login' %}">Get Started</a>
+            <a href="{% url 'login' %}">Visualization</a>
+            <div class="login-signup">
+              <a href="{% url 'login' %}"><button>Login</button></a>
+              <a href="{% url 'admin' %}"><button>admin</button></a>
+              <a href="{% url 'register' %}"><button>Sign Up</button></a>
+            </div>
+          {% endif %}
+      </nav>
+    </header>
+    <main class = "mainf">
+      <div class="disease-menu">
+        <div class="disease-name">
+          <h1><a href="{% url 'CovidInput' %}">Covid-19 Prediction</a></h1>
+        </div>
+        <div class="disease-name">
+          <h1><a href="{% url 'heartInput' %}">Heart DIsease Prediction</a></h1>
+        </div>
+        <div class="disease-name">
+          <h1><a href="{% url 'diabetesInput' %}">Diabetes DIsease Prediction</a></h1>
+        </div>
+      </div>
+        
+    </main>
+
+</body>
+</html> {% endcomment %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disease Prediction</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-image: url({% static 'background.jpg' %});
+            background-size: cover;
+        }
+
+        header {
+            background-color: #283593;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            flex-grow: 1;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 2;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        nav a:hover {
+            background-color: #5c6bc0;
+        }
+        
+        main {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 20px;
+            flex: 1;
+        }
+
+        /* Card Styles */
+        .main-container {
+            padding: 30px;
+        }
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .card {
+            margin: 20px;
+            padding: 20px;
+            width: 500px;
+            min-height: 200px;
+            display: grid;
+            grid-template-rows: 20px 50px 1fr 50px;
+            border-radius: 10px;
+            box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+            transition: all 0.5s;
+            text-align: center;
+        }
+        .card:hover {
+            box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
+            transform: scale(1.01);
+        }
+
+        .card-1 {
+            background: radial-gradient(#5ee26585, #47cc5d86);
+        }
+
+        .card-2 {
+            background: radial-gradient(#e23151b2, #d41737a6);
+        }
+
+        .card-3 {
+            background: radial-gradient(#ffcc00, #ff8800);
+        }
+        .card-4{
+            background: radial-gradient(#ff0c00, #ff1800)
+        }
+        .card-5{
+          background: radial-gradient(#00d4ff, #6a00ff);
+
+        }
+
+        .card__title {
+            grid-row: 3/4;
+            font-weight: 400;
+            color: white;
+            text-decoration : none;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        .card__title a{
+          text-decoration : none;
+          color:black; 
+          border:2px solid;
+          padding:5px;
+          border-radius : 10px;
+          background-color:white;
+        }
+        .card__title a:hover{
+          text-decoration : none;
+          color:white; 
+          border:2px solid;
+          padding:5px;
+          border-radius : 10px;
+          background-color:black;
+        }
+
+        @media (max-width: 1600px) {
+            .card-container {
+                justify-content: center;
+            }
+        }
+
+        footer {
+            background-color: #283593;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+        }
+        .custom-button {
+          background-color: rgb(255, 102, 0);
+          color: white;
+          border: none;
+          border-radius: 25px;
+          padding: 10px 10px;
+          font-size: 1rem;
+          font-weight: bold;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          position: relative;
+          overflow: hidden;
+      }
+      .custom-button::before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 300%;
+          height: 300%;
+          background-color: rgba(255, 255, 255, 0.2);
+          transition: all 0.75s ease;
+          border-radius: 50%;
+          transform: translate(-50%, -50%) scale(0);
+      }
+      .custom-button:hover::before {
+          transform: translate(-50%, -50%) scale(1);
+      }
+      .custom-button:hover {
+          background-color: #5c6bc0;
+          color: #fff;
+      }
+      .custom-button:active {
+          transform: scale(0.95);
+    </style>
+</head>
+<body>
+    <header>
+        <h1><a href="{% url 'index' %}" style = "text-decoration: none;color:white">Disease Prediction</a></h1>
+        <nav>
+            <a href="{% url 'index' %}">Home</a>
+            <a href="{% url 'howitworks' %}">How It Works</a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'getstarted' %}">Get Started</a>
+                {% comment %} <a href="{% url 'visualization' %}">Visualization</a> {% endcomment %}
+                <form method="POST" action="{% url 'logout' %}" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="custom-button">Logout</button>
+                </form>
+            {% else %}
+                <a href="{% url 'login' %}">Get Started</a>
+                {% comment %} <a href="{% url 'login' %}">Visualization</a> {% endcomment %}
+                <div class="login-signup">
+                    <a href="{% url 'login' %}"><button>Login</button></a>
+                    <a href="{% url 'admin' %}"><button>Admin</button></a>
+                    <a href="{% url 'register' %}"><button>Sign Up</button></a>
+                </div>
+            {% endif %}
+        </nav>
+    </header>
+
+    <main>
+        <div class="main-container">
+            <div class="card-container">
+                <div class="card card-1">
+                    <h3>Covid-19 Prediction</h3>
+                    <h2 class="card__title"><a href="{% url 'CovidInput' %}" >Start Prediction</a></h2>
+                </div>
+                <div class="card card-2">
+                    <h3>Heart Disease Prediction</h3>
+                    <h2 class="card__title"><a href="{% url 'heartInput' %}" >Start Prediction</a></h2>
+                </div>
+                <div class="card card-3">
+                    <h3>Diabetes Prediction</h3>
+                    <h2 class="card__title"><a href="{% url 'diabetesInput' %}">Start Prediction</a></h2>
+                </div>
+                <div class="card card-4">
+                  <h3>Stoke Prediction</h3>
+                  <h2 class="card__title"><a href="{% url 'stokeinput' %}">Start Prediction</a></h2>
+                </div>
+                <div class="card card-5">
+                  <h3>Asthma Prediction</h3>
+                  <h2 class="card__title"><a href="{% url 'asthmainput' %}">Start Prediction</a></h2>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2024 Disease Prediction</p>
+    </footer>
+</body>
+</html>

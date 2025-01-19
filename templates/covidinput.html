@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'images/coronacovidimg.jpg' %}">
+    <title>Covid Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        main {
+            background-color: white;
+            background-repeat: no-repeat;
+            background-size: cover;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: black;
+            margin-bottom: 20px;
+        }
+
+        .form-container {
+            background-color: #343a40;
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: white;
+        }
+
+        .form-container .btn-submit {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-container .btn-submit:hover {
+            background-color: #218838;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            select {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    {% include "includes.html" %}
+    <main>
+    <h1>Enter your details</h1>    
+    <div class="container">
+        <div class="form-container">
+            <form action="{% url 'validate_details' %}" method="post">
+                {% csrf_token %}
+                
+                <div class="mb-3">
+                    <label for="breathing_problem">Do you have breathing problem?</label>
+                    <select name="breathing_problem" id="breathing_problem">
+                        <option value="True" selected>Yes</option>
+                        <option value="False">No</option>
+                    </select>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="fever">Do you have fever?</label>
+                    <select name="fever" id="fever">
+                        <option value="True" selected>Yes</option>
+                        <option value="False">No</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="dry_cough">Do you have dry cough?</label>
+                    <select name="dry_cough" id="dry_cough">
+                        <option value="True" selected>Yes</option>
+                        <option value="False">No</option>
+                    </select>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="sore_throat">Do you have sore throat?</label>
+                    <select name="sore_throat" id="sore_throat">
+                        <option value="True" selected>Yes</option>
+                        <option value="False">No</option>
+                    </select>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="running_nose">Do you have running nose?</label>
+                    <select name="running_nose" id="running_nose">
+                        <option value="True" selected>Yes</option>
+                        <option value="False">No</option>
+                    </select>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="asthma">Do you have asthma?</label>
+                    <select name="asthma" id="asthma">
+                        <option value="True" selected>Yes</option>
+                        <option value="False">No</option>
+                    </select>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="chronic_lung_disease">Do you have chronic lung disease?</label>
+                    <select name="chronic_lung_disease" id="chronic_lung_disease">
+                        <option value="True" selected>Yes</option>
+                        <option value="False">No</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="headache">Do you have headache?</label>
+                    <select name="headache" id="headache">
+                        <option value="True" selected>Yes</option>
+                        <option value="False">No</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="heart_disease">Do you have heart disease?</label>
+                    <select name="heart_disease" id="heart_disease">
+                        <option value="True" selected>Yes</option>
+                        <option value="False">No</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="diabetes">Do you have diabetes?</label>
+                    <select name="diabetes" id="diabetes">
+                        <option value="True" selected>Yes</option>
+                        <option value="False">No</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="hyper_tension">Do you have hyper tension?</label>
+                    <select name="hyper_tension" id="hyper_tension">
+                        <option value="True" selected>Yes</option>
+                        <option value="False">No</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="fatigue">Do you have fatigue?</label>
+                    <select name="fatigue" id="fatigue">
+                        <option value="True" selected>Yes</option>
+                        <option value="False">No</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="gastrointestinal">Do you have gastrointestinal?</label>
+                    <select name="gastrointestinal" id="gastrointestinal">
+                        <option value="True" selected>Yes</option>
+                        <option value="False">No</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="abroad_travel">Did you travel abroad?</label>
+                    <select name="abroad_travel" id="abroad_travel">
+                        <option value="True" selected>Yes</option>
+                        <option value="False">No</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="contact_with_covid_patient">Do you have any contact with covid patients?</label>
+                    <select name="contact_with_covid_patient" id="contact_with_covid_patient">
+                        <option value="True" selected>Yes</option>
+                        <option value="False">No</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="attended_large_gathering">Have you attended any large gatherings?</label>
+                    <select name="attended_large_gathering" id="attended_large_gathering">
+                        <option value="True" selected>Yes</option>
+                        <option value="False">No</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="visited_public_exposed_places">Have you visited any public exposed places?</label>
+                    <select name="visited_public_exposed_places" id="visited_public_exposed_places">
+                        <option value="True" selected>Yes</option>
+                        <option value="False">No</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="family_working_in_public_exposed_places">Do you have any family member who works in a public area?</label>
+                    <select name="family_working_in_public_exposed_places" id="family_working_in_public_exposed_places">
+                        <option value="True" selected>Yes</option>
+                        <option value="False">No</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="wearing_masks">Do you wear mask?</label>
+                    <select name="wearing_masks" id="wearing_masks">
+                        <option value="True" selected>Yes</option>
+                        <option value="False">No</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="sanitization_from_market">Do you sanitize items from the market?</label>
+                    <select name="sanitization_from_market" id="sanitization_from_market">
+                        <option value="True" selected>Yes</option>
+                        <option value="False">No</option>
+                    </select>
+                </div>
+                <div class="submitbutton">
+                    <button class="btn">
+                        Submit details
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+               

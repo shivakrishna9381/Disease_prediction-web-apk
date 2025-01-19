@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Prediction</title>
+    <style>
+        .container{
+            margin-top : 200px;
+            width : 100%;
+            height : 100vh;
+            display : flex;
+            justify-content : center;
+            align-items : center;
+            color : white;
+        }
+        .content{
+            border : 2px solid;
+            background-color : rgb(52, 58, 64);
+            width : 75%;
+            border-radius : 15px;
+        }
+        .form-class{
+            padding : 150px;
+            
+        }
+        input{
+            border-radius : 5px;
+            padding : 5px;
+            width : 100%;
+           margin-top : 15px;
+            
+        }
+        .btn{
+            background-color : green;
+            color : white;
+        }
+    </style>
+</head>
+
+<body>
+        {% include "includes.html" %}
+    <div class="container">
+        <div class="content">
+    <form action="{% url "Diabetes_validate" %}" method="POST" class = "form-class">
+        {% csrf_token %}
+
+        <label for="pregnancies">Pregnancies:</label><br>
+        <input type="number" id="pregnancies" name="pregnancies" required min="0"><br><br>
+
+        <label for="glucose">Glucose Level:</label><br>
+        <input type="number" id="glucose" name="glucose" required min="0"><br><br>
+
+        <label for="blood_pressure">Blood Pressure:</label><br>
+        <input type="number" id="blood_pressure" name="blood_pressure" required min="0"><br><br>
+
+        <label for="skin_thickness">Skin Thickness:</label><br>
+        <input type="number" id="skin_thickness" name="skin_thickness" required min="0"><br><br>
+
+        <label for="insulin">Insulin Level:</label><br>
+        <input type="number" id="insulin" name="insulin" required min="0"><br><br>
+
+        <label for="bmi">BMI:</label><br>
+        <input type="number" step="0.1" id="bmi" name="bmi" required min="0"><br><br>
+
+        <label for="diabetes_pedigree_function">Diabetes Pedigree Function:</label><br>
+        <input type="number" step="0.01" id="diabetes_pedigree_function" name="diabetes_pedigree_function" required min="0"><br><br>
+
+        <label for="age">Age:</label><br>
+        <input type="number" id="age" name="age" required min="0"><br><br>
+
+        <input type="submit" value="Predict Diabetes" class = "btn">
+    </form>
+</div>
+</div>
+</body>
+</html>

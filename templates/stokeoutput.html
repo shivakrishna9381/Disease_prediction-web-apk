@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Disease Prediction Results</title>
+  <style>
+    /* Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      background-color: #007bff;
+      color: #fff;
+    }
+
+    header .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    header nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 1rem;
+    }
+
+    header nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* Main Content */
+    main {
+      padding: 2rem;
+    }
+
+    /* Patient Information */
+    .patient-info, .prediction-results, .risk-factors {
+      background-color: #fff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .patient-info .info-card p {
+      margin: 0.5rem 0;
+    }
+
+    /* Prediction Results */
+    .prediction-results .summary {
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .disease-list table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .disease-list th, .disease-list td {
+      border: 1px solid #ddd;
+      padding: 0.75rem;
+      text-align: center;
+    }
+
+    /* Risk Factors */
+    .risk-factors ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .risk-factors li {
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+    <div class="navbar">
+        {% include "includes.html" %}
+    </div>
+    {% if prediction == 0 %}
+  <main>
+    <section class="prediction-results">
+      <h2>Prediction Results</h2>
+      <div class="summary">
+        <h3>Diagnosis: <span style="color : green">Negative</span></h3>
+        <p>Confidence Level: 90%</p>
+      </div>
+    </section>
+
+    <!-- Explanation and Risk Factors -->
+    <section class="risk-factors">
+      <h1>Lifestyle Recommendations to Reduce Stroke Risk</h1><br>
+    <p>Adopting certain healthy lifestyle practices can help mitigate stroke risk, particularly for individuals with modifiable risk factors.</p>
+      <br>
+    <h2>1. Manage Blood Pressure</h2><br>
+    <ul>
+        <li>Regularly monitor blood pressure and consult a healthcare provider if it’s high.</li>
+        <li>Aim for a low-sodium diet rich in potassium to help reduce blood pressure.</li>
+        <li>Limit processed foods and reduce salt in cooking.</li>
+    </ul>
+
+    <h2>2. Exercise Regularly</h2><br>
+    <ul>
+        <li>Engage in at least 150 minutes of moderate aerobic activity, like walking or cycling, per week.</li>
+        <li>Include strength training exercises for overall cardiovascular health.</li>
+        <li>Exercise helps control weight, reduce blood pressure, and improve circulation.</li>
+    </ul>
+
+    <h2>3. Eat a Heart-Healthy Diet</h2><br>
+    <ul>
+        <li>Follow a diet such as the Mediterranean or DASH diet, rich in fruits, vegetables, whole grains, lean proteins, and healthy fats.</li>
+        <li>Avoid foods high in trans fats, saturated fats, and cholesterol, which can raise stroke risk.</li>
+        <li>Opt for healthy fats from sources like olive oil, avocados, nuts, and seeds.</li>
+    </ul>
+
+    <h2>4. Maintain a Healthy Weight</h2><br>
+    <ul>
+        <li>Aim for a body mass index (BMI) within the healthy range (18.5-24.9).</li>
+        <li>Even modest weight loss can help lower blood pressure, cholesterol, and blood sugar.</li>
+    </ul>
+
+    <h2>5. Limit Alcohol Consumption</h2><br>
+    <ul>
+        <li>Keep alcohol consumption moderate: up to one drink per day for women and two drinks per day for men.</li>
+        <li>Excess alcohol raises blood pressure and increases stroke risk.</li>
+    </ul>
+
+    <h2>6. Quit Smoking</h2><br>
+    <ul>
+        <li>Quitting smoking significantly reduces stroke risk within a few years.</li>
+        <li>Seek support through cessation programs or talk to a healthcare provider for help with quitting.</li>
+    </ul>
+
+    <h2>7. Manage Diabetes</h2><br>
+    <ul>
+        <li>Regularly monitor blood sugar levels and aim for an HbA1c level below the recommended target (often below 7%).</li>
+        <li>Follow a balanced diet and, if necessary, consult a dietitian to manage blood sugar levels.</li>
+    </ul>
+
+    <h2>8. Reduce Stress</h2><br>
+    <ul>
+        <li>Practice relaxation techniques such as meditation, deep breathing exercises, or yoga.</li>
+        <li>Consider counseling or support groups if managing stress becomes challenging.</li>
+    </ul>
+
+    <h2>9. Get Regular Check-Ups</h2><br>
+    <ul>
+        <li>Regular health screenings can help catch risk factors like high blood pressure, high cholesterol, and diabetes early.</li>
+        <li>Discuss any family history of stroke or cardiovascular disease with healthcare providers to tailor preventive measures.</li>
+    </ul>
+<br>
+    <h2>Additional Tips</h2><br>
+    <ul>
+        <li><strong>Sleep Well:</strong> Aim for 7–9 hours of quality sleep per night to reduce stroke risk.</li>
+        <li><strong>Know the Signs of a Stroke:</strong> Learn the signs of stroke (e.g., F.A.S.T.: Face drooping, Arm weakness, Speech difficulty, Time to call emergency services) as early recognition can be life-saving.</li>
+    </ul>
+    </section>
+  </main>
+  {% else %}
+  <main>
+    <section class="prediction-results">
+      <h2>Prediction Results</h2>
+      <div class="summary">
+        <h3>Diagnosis: <span style="color : red">Positive</span></h3>
+        <p>Confidence Level: 90%</p>
+      </div>
+      
+    </section>
+
+    <!-- Explanation and Risk Factors -->
+    <section class="risk-factors">
+      <h1>Key Risk Factors for Stroke</h1><br>
+    <p>Stroke risk factors are broadly categorized into modifiable (lifestyle-related) and non-modifiable (genetic and biological).</p>
+<br>
+    <h3>Modifiable Risk Factors</h3>
+    <ul>
+        <li><strong>High Blood Pressure:</strong> Hypertension is one of the leading causes of stroke, especially ischemic stroke.</li>
+        <li><strong>High Cholesterol:</strong> Excessive cholesterol can lead to plaque buildup in blood vessels, increasing the risk of ischemic stroke.</li>
+        <li><strong>Diabetes:</strong> People with diabetes are more prone to strokes due to damage to blood vessels over time.</li>
+        <li><strong>Smoking:</strong> Smoking damages blood vessels, thickens blood, and raises blood pressure, all of which contribute to stroke risk.</li>
+        <li><strong>Obesity:</strong> Excess body weight, especially around the abdomen, can increase blood pressure, cholesterol, and diabetes risk.</li>
+        <li><strong>Sedentary Lifestyle:</strong> Lack of exercise is linked to obesity, high blood pressure, and cholesterol.</li>
+        <li><strong>Unhealthy Diet:</strong> Diets high in saturated fats, trans fats, and sodium increase the risk of high blood pressure and cholesterol.</li>
+        <li><strong>Heavy Alcohol Consumption:</strong> Excessive alcohol raises blood pressure, which can increase stroke risk.</li>
+        <li><strong>Stress:</strong> Chronic stress can contribute to hypertension and increase stroke risk.</li>
+    </ul>
+<br>
+    <h3>Non-Modifiable Risk Factors</h3><br>
+    <ul>
+        <li><strong>Age:</strong> Risk increases with age, especially after 55.</li>
+        <li><strong>Gender:</strong> Men have a higher stroke risk at younger ages, but women are more likely to have strokes at older ages.</li>
+        <li><strong>Family History:</strong> If there’s a family history of stroke or cardiovascular disease, risk may be higher.</li>
+        <li><strong>Race and Ethnicity:</strong> African-Americans have a higher risk of stroke than other racial groups, often due to higher rates of hypertension and diabetes.</li>
+        <li><strong>Prior Stroke or Transient Ischemic Attack (TIA):</strong> A history of stroke or TIA significantly raises the risk of future strokes.</li>
+    </ul>
+    </section>
+  </main>
+  {% endif %}
+</body>
+</html>
